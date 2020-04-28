@@ -2,7 +2,7 @@
 
 Kafka Consumer - Producer based on Spring Kafka.
 
-##### The Hard Mode.
+## The Hard Mode.
 
 [Download](https://kafka.apache.org/downloads) Kafka binaries
 
@@ -32,7 +32,7 @@ Create Kafka Consumer.
 ${kafka.dir}/kafka-console-consumer.{bat|sh} --bootstrap-server localhost:9092 --topic ${topic.name} --from-beginning
 ```
 
-##### The easy mode.
+## The easy mode.
 
 You also can run Kafka and Zookeeper Server with Docker.
 
@@ -50,6 +50,17 @@ Enter to docker container.
 
 ```shell
 docker exec -ti ${container.name} bash
+```
+
+##### Create topic.
+
+```shell
+/opt/bitnami/kafka/bin/kafka-topics.sh \
+    --create \
+    --zookeeper zookeeper-server:2181 \
+    --topic ${topic.name} \
+    --partitions 1 \
+    --replication-factor 1
 ```
 
 ##### Consumer
