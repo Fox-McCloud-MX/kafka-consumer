@@ -1,6 +1,10 @@
 # Apache Kafka Consumer - Producer.
 
+---
+
 Kafka Consumer - Producer based on Spring Kafka.
+
+---
 
 ## The Hard Mode.
 
@@ -32,13 +36,23 @@ Create Kafka Consumer.
 ${kafka.dir}/kafka-console-consumer.{bat|sh} --bootstrap-server localhost:9092 --topic ${topic.name} --from-beginning
 ```
 
+---
+
 ## The easy mode.
 
 You also can run Kafka and Zookeeper Server with Docker.
 
+Docker Zookeeper Server.
+
+```shell
+docker run --name zookeeper-server -d zookeeper:latest
+```
+
+Docker Kafka Server.
+
 ```shell
 docker run \
-    -d --name ${container.name} \
+    -d --name kafka-server \
     -p 9092:9092 \
     -e KAFKA_ZOOKEEPER_CONNECT=zookeeper-server:2181 \
     -e ALLOW_PLAINTEXT_LISTENER=yes \
@@ -49,7 +63,7 @@ docker run \
 Enter to docker container.
 
 ```shell
-docker exec -ti ${container.name} bash
+docker exec -ti kafka-server bash
 ```
 
 ##### Create topic.
@@ -72,5 +86,18 @@ kafka-console-consumer.sh \
     --bootstrap-server 127.0.0.1:9092 \
     --topic ${topic.name} \
     --consumer.config /opt/bitnami/kafka/conf/consumer.properties
+```
+
+---
+
+## Useful Docker Commands
+
+##### List topic
+
+```shell
+/opt/bitnami/kafka/bin/kafka-topics.sh \
+    --describe \
+    --zookeeper zookeeper-server:2181 \
+    --topic ${topic.name}
 ```
 
