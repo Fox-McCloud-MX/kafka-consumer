@@ -1,8 +1,8 @@
-# Apache Kafka Consumer - Producer.
+# Apache Kafka Consumer.
 
 ---
 
-Kafka Consumer - Producer based on Spring Kafka.
+Kafka Consumer based on Spring Kafka.
 
 ---
 
@@ -65,6 +65,8 @@ Enter to docker container.
 ```shell
 docker exec -ti kafka-server bash
 ```
+
+Run commands below into docker image.
 
 ##### Create topic.
 
